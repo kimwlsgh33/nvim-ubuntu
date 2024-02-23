@@ -1,3 +1,7 @@
+-- dependencies
+-- rg : ripgrep
+-- fd : fd-find
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -61,11 +65,6 @@ require("lazy").setup({
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
   { 'christoomey/vim-tmux-navigator' },
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build =
-    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-  },
   -- amongst your other plugins
   -- {'akinsho/toggleterm.nvim', version = "*", config = true}
   {
@@ -86,6 +85,26 @@ require("lazy").setup({
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+  },
+  -- telescope
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.5',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build =
+    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  },
+  {
+    'stevearc/aerial.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    },
   }
 } --, opts)
 )
