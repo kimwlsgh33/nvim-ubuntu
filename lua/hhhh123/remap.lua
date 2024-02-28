@@ -65,7 +65,7 @@ end)
 vim.keymap.set('n', '<C-e>', function ()
   harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
-vim.keymap.set('n', '<C-h>', function ()
+vim.keymap.set('n', '<C-y>', function ()
   harpoon:list():select(1)
 end)
 vim.keymap.set('n', '<C-t>', function ()
@@ -87,5 +87,13 @@ vim.keymap.set('n', '<C-S-N>', function ()
   harpoon:list():next()
 end)
 
--- toggle aerial
-vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
+-- Toggle aerial
+-- vim.keymap.set("n", "<leader>s", "<cmd>AerialToggle!<CR>")
+
+-- Toggle Gitsigns
+vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<CR>")
+
+-- Toggle term
+vim.keymap.set("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<CR>")
+vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<CR>")
+vim.keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>")

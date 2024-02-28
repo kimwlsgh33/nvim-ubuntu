@@ -1,7 +1,3 @@
--- dependencies
--- rg : ripgrep
--- fd : fd-find
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -25,10 +21,11 @@ require("lazy").setup({
     end,
   },
   "tpope/vim-surround",
-  {
-    "rose-pine/neovim",
-    name = "rose-pine"
-  },
+  "Mofiqul/dracula.nvim",
+  -- {
+  --   "rose-pine/neovim",
+  --   name = "rose-pine"
+  -- },
   { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim' },
   -- LSP Support
@@ -65,8 +62,6 @@ require("lazy").setup({
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
   { 'christoomey/vim-tmux-navigator' },
-  -- amongst your other plugins
-  -- {'akinsho/toggleterm.nvim', version = "*", config = true}
   {
     'akinsho/toggleterm.nvim',
     version = "*",
@@ -98,13 +93,66 @@ require("lazy").setup({
     'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   },
   {
-    'stevearc/aerial.nvim',
-    opts = {},
-    -- Optional dependencies
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
+    "max397574/better-escape.nvim",
+    opts = { timeout = 300 },
+    config = function(opts)
+      require("better_escape").setup(opts)
+    end,
+  },
+  -- UI (LSP rename)
+  {
+    'stevearc/dressing.nvim',
+    opts = {
+      input = {
+        default_prompt = "➤ ",
+        win_options = { winhighlight = "Normal:Normal,NormalNC:Normal" },
+      },
+      select = {
+        backend = { "telescope", "builtin" },
+        builtin = { win_options = { winhighlight = "Normal:Normal,NormalNC:Normal" } },
+      },
     },
+  },
+  {
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      signs = {
+        add          = { text = '│' },
+        change       = { text = '│' },
+        delete       = { text = '_' },
+        topdelete    = { text = '‾' },
+        changedelete = { text = '~' },
+        untracked    = { text = '┆' },
+      },
+    }
+  },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl" },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+  },
+  {
+    'mrjones2014/smart-splits.nvim',
+    opts = {
+      ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" },
+      ignored_buftypes = { "nofile" }
+    },
+    config = function(opts)
+      require("smart-splits").setup(opts)
+    end
+  },
+  -- {
+  --   'kevinhwang91/nvim-ufo',
+  --   dependencies = { 'kevinhwang91/promise-async' }
+  -- }
+  {
+    "NeogitOrg/neogit",
+    optional = true,
+    opts = { integrations = { diffview = true } }
+  },
+  {
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen" }
   }
 } --, opts)
 )
