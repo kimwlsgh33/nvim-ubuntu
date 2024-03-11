@@ -45,7 +45,20 @@ require("lazy").setup({
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
-      { 'L3MON4D3/LuaSnip' }
+      { 'L3MON4D3/LuaSnip' },
+      {
+        {
+          "kristijanhusak/vim-dadbod-completion",
+          init = function()
+            vim.api.nvim_create_autocmd("FileType", {
+              desc = "dadbod completion",
+              group = vim.api.nvim_create_augroup("dadbod_cmp", { clear = true }),
+              pattern = { "sql", "mysql", "plsql" },
+              callback = function() require("cmp").setup.buffer { sources = { { name = "vim-dadbod-completion" } } } end,
+            })
+          end,
+        },
+      }
     },
   },
   {
@@ -153,7 +166,12 @@ require("lazy").setup({
   {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen" }
-  }
+  },
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    dependencies = "tpope/vim-dadbod",
+    event = "VeryLazy",
+  },
 } --, opts)
 )
 require("hhhh123")

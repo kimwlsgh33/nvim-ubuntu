@@ -1,7 +1,7 @@
 -- file
 vim.keymap.set('n', '<leader>q', vim.cmd.q)
 vim.keymap.set('n', '<leader>w', vim.cmd.w)
-
+vim.keymap.set('n', '<leader>bd', vim.cmd.bd)
 
 -- theprimeagen
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
@@ -97,3 +97,7 @@ vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<CR>")
 vim.keymap.set("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<CR>")
 vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<CR>")
 vim.keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>")
+
+-- DB
+vim.keymap.set("n", "<leader>dd", "<cmd>DBUI<CR>")
+vim.keymap.set("n", "<leader>db", "<cmd>DB mysql://madang:madang@localhost/<CR>")

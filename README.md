@@ -1,4 +1,4 @@
-# Requirements
+# Requirements {#top}
 
 ## Git
 You should install latest version of git
@@ -10,8 +10,12 @@ sudo apt install git
 ---
 
 ## neovim
+
+you should use neovim >= 0.9
+
 ```sh
-sudo apt install neovim
+# Ubuntu
+sudo snap install neovim
 ```
 
 ### Telescope.nvim
@@ -34,6 +38,13 @@ sudo apt install fd-find
 ```
 ---
 
+#### fzf
+```sh
+sudo apt install fzf
+```
+
+#### vim-dadbod
+
 # How to move from packer to lazy
 | packer | lazy |
 |---     |---   |
@@ -51,3 +62,14 @@ sudo apt install fd-find
 | mt | mark a target at a current cursur |
 | mf | mark a file at a current cursor |
 | mc | copy a marked file at a target |
+
+# How to use mark down
+
+==what is this==
+emoji :joy:
+Subscript : H~2~O
+Superscript : X^2^
+https://www.example.com
+`https://www.example.com`
+
+[Top](#top)
